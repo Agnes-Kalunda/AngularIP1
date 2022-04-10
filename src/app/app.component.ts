@@ -1,41 +1,46 @@
-import { Component,OnInit} from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
-interface Quotes {
-  quote : string;
-  author : string;
+interface Quote {
+  quote: string;
+  author: string;
 }
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.scss"],
 })
-export class AppComponent implements OnInit{
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
-  loading : boolean = true;
-  title = 'Quotes';
-  quotes!: Quotes;
-  quotesList!:Quotes[];
+export class AppComponent implements OnInit {
+  loading: boolean = true;
+  quote!: Quote;
+  quoteList!: Quote[];
   tweetURL!: string;
-
-  getNewQuotes:()=> void =(): void =>{
-    const idx = Math.floor(Math.random()*this.quotesList.length)
-    const newQuotes = this.quotesList[idx];
-    this.quotes= newQuotes;
+  getNewQuote: () => void = (): void => {
+    const idx = Math.floor(Math.random() * this.quoteList.length);
+    const newQuote = this.quoteList[idx];
+    this.quote = newQuote;
   };
 
-  constructor(){}
+  constructor() {}
 
-  ngOnInit(){
+  ngOnInit() {
     this.fetchData();
   }
-  fetchData() {
-    throw new Error('Method not implemented.');
+
+  async fetchData(): Promise<void> {
+    const quotesURL =
+      "https://gist.githubusercontent.com/camperbot/5a022b72e96c4c9585c32bf6a75f62d9/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json";
+    const response = await fetch(quotesURL);
+    const quotes = await response.json();
+    const idx = Math.floor(Math.random() * quotes.quotes.length);
+    const newQuote = quotes.quotes[idx];
+    this.quoteList = quotes.quotes;
+    this.quote = newQuote;
+    this.setTweetURL(newQuote);
+    this.loading = false;
   }
 
-  async fetchData(): Promise<void>{
-    const quoteURL=
+  setTweetURL(quote: Quote): void {
+    this.tweetURL = `https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text=${quote.quote} --${quote.author}`;
   }
 }
