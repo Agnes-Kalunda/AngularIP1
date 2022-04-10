@@ -19,4 +19,8 @@ export class AppComponent implements OnInit{
   quotes!: Quotes;
   quotesList!:Quotes[];
   tweetURL!: string;
+
+  getNewQuotes:()=> void =(): void =>{
+    
+  }
 }
