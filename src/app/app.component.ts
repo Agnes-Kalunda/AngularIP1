@@ -21,6 +21,21 @@ export class AppComponent implements OnInit{
   tweetURL!: string;
 
   getNewQuotes:()=> void =(): void =>{
-    
+    const idx = Math.floor(Math.random()*this.quotesList.length)
+    const newQuotes = this.quotesList[idx];
+    this.quotes= newQuotes;
+  };
+
+  constructor(){}
+
+  ngOnInit(){
+    this.fetchData();
+  }
+  fetchData() {
+    throw new Error('Method not implemented.');
+  }
+
+  async fetchData(): Promise<void>{
+    const quoteURL=
   }
 }
