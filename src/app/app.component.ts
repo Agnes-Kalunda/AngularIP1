@@ -36,11 +36,11 @@ export class AppComponent implements OnInit {
     const newQuote = quotes.quotes[idx];
     this.quoteList = quotes.quotes;
     this.quote = newQuote;
-    this.setTweetURL(newQuote);
-    this.loading = false;
+    // this.setTweetURL(newQuote);
+    // this.loading = false;
   }
 
-  setTweetURL(quote: Quote): void {
-    this.tweetURL = `https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text=${quote.quote} --${quote.author}`;
-  }
+  // setTweetURL(quote: Quote): void {
+  //   this.tweetURL = `https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text=${quote.quote} --${quote.author}`;
+  // }
 }
