@@ -6,29 +6,31 @@ $black: #3f3f3f; */
   /* background-color: $white; */
   margin: 20%;
   border-radius: 10px;
-  color: $black;
+}
+  
+  /* color: $black; */
 
-  #text {
+  /* #text {
     font-family: "Amiri", serif;
-  }
-  #author {
+  } */
+  /* #author {
     font-family: "Neucha", cursive;
     font-size: 2.5em;
-  }
-  .btn-row {
+  } */
+  /* .btn-row {
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
-
+    justify-content: flex-end; */
+/* 
     #tweet-quote {
       margin-left: 1em;
-    }
-  }
-}
+    } */
+  /* } */
+/* } */
 
 @media only screen and (max-width: 480px) {
   #quote-box {
     margin: 0;
     overflow-y: auto;
   }
-}
+ } 
